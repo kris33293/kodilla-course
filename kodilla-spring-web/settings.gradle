@@ -1,0 +1,5 @@
+rootProject.name = 'kodilla-spring'
+
+include "kodilla-spring-web"
+
+
