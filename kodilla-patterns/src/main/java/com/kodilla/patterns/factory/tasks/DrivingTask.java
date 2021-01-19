@@ -25,9 +25,7 @@ public class DrivingTask implements Task {
         return finished;
     }
 
-    public void setFinished(boolean finished) {
-        this.finished = finished;
-    }
+
 
     @Override
     public boolean equals(Object o) {
