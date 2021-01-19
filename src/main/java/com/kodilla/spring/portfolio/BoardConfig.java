@@ -8,33 +8,47 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import java.util.List;
+
 @Configuration
 public class BoardConfig {
 
 
 
-    @Autowired
-    TaskList toDoList;
-    TaskList inProgressList;
-    TaskList doneList;
 
-    Board board = new Board(toDoList,inProgressList,doneList);
+
 
     @Bean
-    public TaskList getToDoList() {
-        return board.getToDoList();
+    @Scope("prototype")
+    public List<String> getToDoList() {
+        TaskList toDoList = new TaskList("to do list");
+        toDoList.addTasks("Pierwsze to do");
+        toDoList.addTasks("Drugie to do");
+        toDoList.addTasks("Trzecie to do");
+        return toDoList.getTasks();
     }
 
     @Bean
-    public TaskList getInProgressList() {
-        return board.getInProgressList();
+    @Scope("prototype")
+    public List<String> getInProgressList() {
+        TaskList inProgressList = new TaskList("In progress list");
+        inProgressList.addTasks("Pierwsze in progress");
+        inProgressList.addTasks("Drugie in progress");
+        inProgressList.addTasks("Trzecie in progress");
+        return  inProgressList.getTasks();
     }
 
     @Bean
-    public TaskList getDoneList() {
-        return board.getDoneList();
+    @Scope("prototype")
+    public List<String> getDoneList() {
+        TaskList doneList = new TaskList("Done list");
+        doneList.addTasks("Pierwsze in progress");
+        doneList.addTasks("Drugie in progress");
+        doneList.addTasks("Trzecie in progress");
+        return  doneList.getTasks();
     }
 
 
 
 }
+
