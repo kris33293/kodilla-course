@@ -23,7 +23,7 @@ public class PaintingTask implements Task {
     }
 
     public boolean isTaskExecuted() {
-        return finished != false;
+        return finished;
     }
 
     public void setFinished(boolean finished) {

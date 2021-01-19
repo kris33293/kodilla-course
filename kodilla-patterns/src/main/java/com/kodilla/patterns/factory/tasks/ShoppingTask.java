@@ -23,7 +23,7 @@ public class ShoppingTask implements Task {
     }
 
     public boolean isTaskExecuted() {
-        return finished != false;
+        return finished;
     }
 
     @Override
