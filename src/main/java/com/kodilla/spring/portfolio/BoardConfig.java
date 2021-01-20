@@ -1,12 +1,10 @@
 package com.kodilla.spring.portfolio;
 
 
+import com.kodilla.spring.library.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import java.util.List;
 
@@ -15,37 +13,54 @@ public class BoardConfig {
 
 
 
+    @Autowired
+    @Qualifier("1")
+    TaskList toDoList;
 
+    @Autowired
+    @Qualifier("2")
+    TaskList inProgressList;
 
+    @Autowired
+    @Qualifier("3")
+    TaskList doneList;
 
     @Bean
+    public Board board() {
+        return new Board(toDoList,inProgressList,doneList);
+    }
+
+
+    @Bean(name = "1")
+    @Qualifier
     @Scope("prototype")
-    public List<String> getToDoList() {
+    public TaskList getToDoList() {
         TaskList toDoList = new TaskList("to do list");
         toDoList.addTasks("Pierwsze to do");
         toDoList.addTasks("Drugie to do");
         toDoList.addTasks("Trzecie to do");
-        return toDoList.getTasks();
+        return toDoList;
     }
 
-    @Bean
+
+    @Bean(name = "2")
     @Scope("prototype")
-    public List<String> getInProgressList() {
+    public TaskList getInProgressList() {
         TaskList inProgressList = new TaskList("In progress list");
         inProgressList.addTasks("Pierwsze in progress");
         inProgressList.addTasks("Drugie in progress");
         inProgressList.addTasks("Trzecie in progress");
-        return  inProgressList.getTasks();
+        return  inProgressList;
     }
 
-    @Bean
+    @Bean(name = "3")
     @Scope("prototype")
-    public List<String> getDoneList() {
+    public TaskList getDoneList() {
         TaskList doneList = new TaskList("Done list");
         doneList.addTasks("Pierwsze in progress");
         doneList.addTasks("Drugie in progress");
         doneList.addTasks("Trzecie in progress");
-        return  doneList.getTasks();
+        return  doneList;
     }
 
 
