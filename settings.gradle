@@ -3,7 +3,7 @@ include 'kodilla-spring'
 include 'kodilla-spring-web'
 include 'kodilla-patterns'
 include 'kodilla-spring-web:kodilla-jdbc'
-findProject(':kodilla-spring-web:kodilla-jdbc')?.name = 'kodilla-jdbc'
+
 include 'kodilla-jdbc'
-include 'kodilla-jdbc'
+
 
